@@ -7,6 +7,11 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 
+import {IonicStorageModule} from '@ionic/storage-angular';
+import {Drivers} from '@ionic/storage';
+
+import { provideHttpClient } from "@angular/common/http";
+
 if (environment.production) {
   enableProdMode();
 }
@@ -15,6 +20,11 @@ bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
+    importProvidersFrom(IonicStorageModule.forRoot({
+        name:  'remotepiDB',
+        driverOrder:[Drivers.IndexedDB]
+    })),
+    provideHttpClient(),
     provideRouter(routes),
   ],
 });
