@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Device Data</ion-title>
+    <ion-buttons slot="start">
+      <ion-button   fill="solid"  [routerLink]="['/list']" >< Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" label="Title" labelPlacement="floating"  [(ngModel)]="localAppDataService.selectedItemforEdit.deviceTitle" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" label="URL" labelPlacement="floating"  [(ngModel)]="localAppDataService.selectedItemforEdit.deviceURL"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" label="Key" labelPlacement="floating"  [(ngModel)]="localAppDataService.selectedItemforEdit.deviceKEY"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <ion-item>
+    <ion-button size="default" (click)="saveDeviceData()">  <ion-icon slot="start" name="save"></ion-icon> Save</ion-button>
+    </ion-item>
+  </ion-card>
+</ion-content>
