@@ -317,7 +317,32 @@ shutdownDevice () {
                               map(this.extractData),
                               catchError(this.handleError));
                    }
+restoreDeviceConfiguration () {
+                          let post_parameters = {
+                             API_key : this.ServerKEY,
+                             request_action: "restore_device_configuration"
+                           };
 
+                           let API_CALL_URL  = this.ServerURL + this.ServerPath;
+                          // console.log(' get_historic_data  URL:', API_CALL_URL , post_parameters);
+
+                            return this.http.post(API_CALL_URL,  post_parameters , this.httpOptions).pipe(
+                              map(this.extractData),
+                              catchError(this.handleError));
+                   }
+backupDeviceConfiguration () {
+                          let post_parameters = {
+                             API_key : this.ServerKEY,
+                             request_action: "backup_device_configuration"
+                           };
+
+                           let API_CALL_URL  = this.ServerURL + this.ServerPath;
+                          // console.log(' get_historic_data  URL:', API_CALL_URL , post_parameters);
+
+                            return this.http.post(API_CALL_URL,  post_parameters , this.httpOptions).pipe(
+                              map(this.extractData),
+                              catchError(this.handleError));
+                   }
 
 
 }

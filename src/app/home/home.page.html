@@ -66,7 +66,7 @@
   <ion-card [hidden]="!connectedToDevice">
     <ion-card-content>
 
-            <ion-button fill="outline" size="default" id="restart-device-alert"  >Restart Device</ion-button>
+            <ion-button fill="outline" size="default" id="restart-device-alert" >Restart Device</ion-button>
             <ion-alert
               trigger="restart-device-alert"
               header="Are You sure you want to restart the device?"
@@ -83,8 +83,22 @@
             <br>
 
 
-          <ion-button fill="outline" size="default">Restore Initial Configuration</ion-button><br>
-          <ion-button fill="outline" size="default">Save this configuration as Initial</ion-button><br>
+          <ion-button fill="outline" size="default" id="restore-config-alert">Restore backup Configuration</ion-button>
+          <ion-alert
+            trigger="restore-config-alert"
+            header="Restore backup configuration?"
+            [buttons]="restoreConfigButtons"
+          ></ion-alert>
+          <br>
+
+          <ion-button fill="outline" size="default" id="save-config-alert">Save this configuration as backup</ion-button>
+          <ion-alert
+            trigger="save-config-alert"
+            header="Save this configuration as backup?"
+            [buttons]="saveConfigButtons"
+          ></ion-alert>
+      <br>
+
            <br>
           <ion-button fill="outline" size="default" target="_blank" href="{{AppConfig.deviceURL}}/phpLiteAdmin/phpliteadmin.php" >Edit Configuration DB</ion-button>
     </ion-card-content>

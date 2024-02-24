@@ -658,6 +658,71 @@ await this.backendDataService.shutdownDevice()
     },
   ];
 
+ public restoreConfigButtons = [
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      handler: () => {
+        console.log('Alert canceled');
+      },
+    },
+    {
+      text: 'OK',
+      role: 'confirm',
+      handler: () => {
+        console.log('Alert confirmed');
+        this.restoreConfiguration();
+      },
+    },
+  ];
+
+   public saveConfigButtons = [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Alert canceled');
+        },
+      },
+      {
+        text: 'OK',
+        role: 'confirm',
+        handler: () => {
+          console.log('Alert confirmed');
+          this.backupConfiguraiton();
+        },
+      },
+    ];
+
+
+async  restoreConfiguration () {
+await this.backendDataService.restoreDeviceConfiguration()
+  .subscribe(res => {
+    console.log(res);
+    this.other_loading = false;
+    this.update_loading ();
+  }, err => {
+    console.log(err);
+    this.other_loading = false;
+    this.update_loading ();
+  });
+}
+
+
+async  backupConfiguraiton () {
+await this.backendDataService.backupDeviceConfiguration()
+  .subscribe(res => {
+    console.log(res);
+    this.other_loading = false;
+    this.update_loading ();
+  }, err => {
+    console.log(err);
+    this.other_loading = false;
+    this.update_loading ();
+  });
+}
+
+
 
 }
 
